@@ -1,10 +1,10 @@
-# Teslam: Temporal Sentence Localization in 3D Human Motions
+# MLP: Motion Label Prior for Temporal Sentence Localization in Untrimmed 3D Human Motions
 
 ## Description
-Official PyTorch implementation of the paper [**"Teslam: Temporal Sentence Localization in 3D Human Motions"**](https://???)(Under review).
+Official PyTorch implementation of the paper [**"MLP: Motion Label Prior for Temporal Sentence Localization in Untrimmed 3D Human Motions"**](https://???)(Under review).
 
 ![case_1](visuals/3503.jpg)
-![case_2](visuals/5682.jpg)
+![case_2](visuals/h3d_687.jpg)
 
 ## Installation
 
