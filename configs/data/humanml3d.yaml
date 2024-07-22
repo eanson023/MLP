@@ -1,0 +1,30 @@
+dataname: humanml3d
+_target_: mlp.data.humanml3d.H3DDataset
+
+# Paths
+datapath: ${path.datasets}/motions/guoh3dfeats
+labelpath: ${path.datasets}/${data.dataname}
+
+# MPNet similarity threshold, 0.8 represents almost perfect similarity
+threshold: 0.8
+training_checked: ${model.training_checked}
+
+t2s_model:
+  _target_: mlp.model.text.sent_enc.SentenceEncoder
+  modelpath: ${path.deps}/all-mpnet-base-v2
+  device: cuda
+
+nums_snippet: ${model.nums_snippet}
+
+# When set to true, the motion data is loaded into memory immediately when the dataset is loaded
+in_memory: true
+
+before_norm: false
+
+# Machine
+batch_size: ${machine.batch_size}
+num_workers: ${machine.num_workers}
+debug: ${debug}
+
+defaults:
+  - _self_

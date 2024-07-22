@@ -1,0 +1,7 @@
+# path to additional modules
+datasets: ${code_path:./datasets}
+deps: ${code_path:./deps}
+code_dir: ${code_path:}
+working_dir: ${working_path:""}
+glove_dir: ${code_path:./glove}
+vocab_path: ${path.glove_dir}/babel_v1.0_release_vocab.pkl

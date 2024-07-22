@@ -1,0 +1,38 @@
+name: server for babel dataset
+
+use_gpu: true
+
+# specific attributes to this machine
+# Size of a training mini-batch.
+batch_size: 64
+
+optimizer_type: AdamW
+betas: [0.9,0.999]
+weight_decay: 0.01
+num_workers: 4
+# Number of training epochs.
+num_epochs: 100
+# Initial learning rate.
+learning_rate: 0.0002
+clip_norm: 0.1
+warmup_proportion: 0.0
+# lr_scheduler
+scheduler_type: step
+decay_step: 50
+decay_factor: 0.5
+
+# Visualization every x epochs
+vis_every: 20
+# Number of samples to visualize
+vis_nsamples: 32
+
+curriculum_learning_at: -1
+
+# eval
+evaluate_after: -1
+every_eval: 1
+after_eval: 0
+# logging step
+print_every: 200
+
+dataname: ${data.dataname}

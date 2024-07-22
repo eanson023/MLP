@@ -1,0 +1,6 @@
+use_highlight_loss: true
+highlight_loss_func: ${model.func_highlight}
+
+grounding_loss_func: ${model.func_grounding}
+
+use_dn_loss: false

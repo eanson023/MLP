@@ -1,0 +1,46 @@
+name: temporal motion localization
+_target_: mlp.model.mlp.MLP
+
+data_rep: guo263
+# Whether to use 'false-negative moment' as supervision
+training_checked: false
+# whether to evaluate the "protocol (b): assigned" during training
+eval_checked: false
+save_pred: false
+
+# Dimensionality of the latent embedding.
+latent_dim: 256
+# The maximum number of snippet interval the model can accept. (denoted as $S$ in our paper)
+nums_snippet: 256
+# Using LoRA to finetune RoBERTa
+finetune: false
+
+
+# T-Enc configuration
+num_layers: 2
+num_heads: 4
+dropout: 0.1
+activation: gelu
+# Whether the two modalities share an encoder
+shared: true
+
+# Loss trade-off hyperparameters
+pred_lambda: 1.0
+highlight_lambda: 5.0
+
+
+defaults:
+  - motion: mo_conv
+  - text: roberta
+  # only T-Enc
+  - encoder: t_enc_only
+  - losses: mlpbase
+  - /machine/server@optim
+  - /model/losses/function/ce_loss@func_grounding
+  - /model/losses/function/highlight_loss@func_highlight
+  - /model/blocks/cq_attention@cq_attention
+  - /model/blocks/cq_concatenate@cq_concatenate
+  # common Sequence Matcher
+  - /model/blocks/matcher@highlight_layer
+  # common Span Predictor
+  - /model/blocks/pred@predictor

@@ -1,0 +1,13 @@
+name: label_prior_sequence_matcher
+_target_: mlp.model.blocks.matcher.LabelPriorSequenceMatcher
+
+dim: ${model.latent_dim}
+# Number of sequence matching tags: including foreground, background, PAD
+label_size: 3
+max_snippet_len: ${model.nums_snippet}
+drop_rate: ${model.dropout}
+kernel_size: 1
+sampling_type: scheduled
+scheduled_sampling_limit: 1.0
+mask_ratio: ${model.alpha}
+mask_type: structured_frame

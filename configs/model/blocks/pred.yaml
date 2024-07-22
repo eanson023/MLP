@@ -1,0 +1,5 @@
+_target_: mlp.model.blocks.pred.CommonPredictor
+
+dim: ${model.latent_dim}
+max_pos_len: ${model.nums_snippet}
+drop_rate: ${model.dropout}

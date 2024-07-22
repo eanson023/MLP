@@ -1,0 +1,5 @@
+modelname: cq_attention
+_target_: mlp.model.blocks.attention.CQAttention
+
+dim: ${model.latent_dim}
+drop_rate: ${model.dropout}

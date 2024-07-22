@@ -1,0 +1,34 @@
+hydra:
+  run:
+    dir: outputs/${data.dataname}/batchsize${machine.batch_size}/${experiment}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  # automatically go to the job folder (needed for hydra > 1.2 with new behavior)
+  job:
+    chdir: true
+
+# Global configurations shared between different modules
+experiment: mlp
+
+
+# breakpoint continue, relative dir of chekcpoint
+resume: ''
+
+seed: 1234
+
+logging:
+  print_level: INFO
+  write_level: INFO
+
+debug: true
+
+# Composing nested config with default
+defaults:
+  - model: mlp
+  - data: babel
+  - machine: server
+  - /path@path
+  - _self_
+
+
+
+
+

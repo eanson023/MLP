@@ -1,0 +1,9 @@
+name: future_enc
+_target_: mlp.model.encoder.t_enc_only.TEncoder
+
+dim: ${model.latent_dim}
+max_snippet_len: ${model.nums_snippet}
+num_heads: ${model.num_heads}
+num_layers: ${model.num_layers}
+drop_rate: ${model.dropout}
+shared: ${model.shared}

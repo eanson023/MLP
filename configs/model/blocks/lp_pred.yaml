@@ -1,0 +1,5 @@
+_target_: mlp.model.blocks.pred.LabelPriorPredictor
+
+dim: ${model.latent_dim}
+drop_rate: ${model.dropout}
+mask_ratio: ${model.beta}

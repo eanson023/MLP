@@ -1,0 +1,7 @@
+name: cross entropy loss
+_target_: mlp.losses.dn_ce_loss.CrossEntropyLoss
+
+# smooth: ${model.smooth}
+# extend: ${model.extend}
+# alpha: ${model.alpha}
+pred_lambda: ${model.pred_lambda}

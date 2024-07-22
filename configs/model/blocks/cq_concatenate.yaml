@@ -1,0 +1,4 @@
+modelname: cq_concatenate
+_target_: mlp.model.blocks.attention.CQConcatenate
+
+dim: ${model.latent_dim}

@@ -1,0 +1,6 @@
+name: highlight_loss
+_target_: mlp.losses.highlight_loss.HighLightLoss
+
+# smooth: ${model.smooth}
+
+highlight_lambda: ${model.highlight_lambda}

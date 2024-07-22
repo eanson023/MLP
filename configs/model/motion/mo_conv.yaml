@@ -1,0 +1,7 @@
+name: motion_conv_encoder
+_target_: mlp.model.motion.mo_conv.MotionSpatioConvEncoder
+
+latent_dim: ${model.latent_dim}
+dropout: ${model.dropout}
+dataset: ${data.dataname}
+data_rep: ${model.data_rep}

@@ -1,0 +1,53 @@
+name: temporal_motion_localization
+_target_: mlp.model.mlp.MLP
+
+# ['cont_6d', 'cont_6d_plus_rifke', 'cont_6d_plus_rifke_plus_velocity]
+data_rep: cont_6d_plus_rifke_plus_velocity
+# Whether to use 'false-negative moment' as supervision
+training_checked: false
+# whether to evaluate the "protocol (b): assigned" during training
+eval_checked: false
+save_pred: false
+
+# Dimensionality of the latent embedding (denoted as $d$ in our paper).
+latent_dim: 256
+# The maximum number of snippet interval the model can accept. (denoted as $S$ in our paper)
+nums_snippet: 256
+# Using LoRA to finetune RoBERTa
+finetune: false
+
+# alpha: LPMatcher perturb rate
+alpha: 0.8
+# beta: LPPredictor noise rate
+beta: 0.1
+
+# T-Enc configuration
+num_layers: 2
+num_heads: 4
+dropout: 0.1
+activation: gelu
+# Whether the two modalities share an encoder
+shared: true
+
+# Loss trade-off hyperparameters
+pred_lambda: 1.0
+highlight_lambda: 5.0
+kl_lambda: 1.0
+
+defaults:
+  - motion: mo_conv
+  - text: roberta
+  # S-Enc+T-Enc
+  - encoder: s_enc_t_enc
+  - losses: mlp
+  - /machine/server@optim
+  - /model/losses/function/ce_loss@func_grounding
+  - /model/losses/function/dn_ce_loss@func_dn
+  - /model/losses/function/dn_kl_loss@func_dn_kl
+  - /model/losses/function/highlight_loss@func_highlight
+  - /model/blocks/cq_attention@cq_attention
+  - /model/blocks/cq_concatenate@cq_concatenate
+  # LP-Matcher
+  - /model/blocks/lp_matcher@highlight_layer
+  # LP-Predictor
+  - /model/blocks/lp_pred@predictor

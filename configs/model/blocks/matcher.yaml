@@ -1,0 +1,4 @@
+name: VSLNet_Sequence_Matcher
+_target_: mlp.model.blocks.matcher.CommonSequenceMatcher
+
+dim: ${model.latent_dim}

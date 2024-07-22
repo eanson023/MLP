@@ -1,0 +1,5 @@
+name: kl loss
+_target_: mlp.losses.dn_kl_loss.KLLoss
+
+kl_lambda: ${model.kl_lambda}
+t: 1.0

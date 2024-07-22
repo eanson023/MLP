@@ -1,0 +1,8 @@
+name: textencoder_roberta
+_target_: mlp.model.text.roberta.RobertaEncoder
+
+latent_dim: ${model.latent_dim}
+drop_rate: ${model.dropout}
+out_dim: ${model.latent_dim}
+modelpath: ${path.deps}/roberta-base
+finetune: ${model.finetune}
